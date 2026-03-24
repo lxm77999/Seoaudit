@@ -1,0 +1,323 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>修改方案</title><style>body{margin:0;padding:32px;background:#f5f7fb;color:#222;font:15px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}.wrap{max-width:1120px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.06);padding:36px}h1{margin:0 0 8px;font-size:30px;color:#111827}.meta{color:#6b7280;font-size:14px;margin-bottom:24px}.block{margin-bottom:30px;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}.block-title{background:#111827;color:#fff;padding:14px 18px;font-size:18px;font-weight:700}.block-body{padding:18px}.label{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:10px}.high{background:#fee2e2;color:#b91c1c}.mid{background:#fef3c7;color:#92400e}.low{background:#e0f2fe;color:#075985}.code-title{margin:16px 0 8px;font-weight:700;color:#111827}pre{margin:0 0 14px;padding:14px;border-radius:10px;overflow-x:auto;background:#0f172a;color:#e5e7eb;font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word}ul{margin:8px 0 0 20px;padding:0}li{margin-bottom:8px}.url{word-break:break-all;color:#2563eb}.need-fix{color:#dc2626;font-weight:700}</style></head><body><div class="wrap"><h1>修改方案</h1><div class="meta">本方案与测试详细报告对应。</div><div class="block"><div class="block-title">404 页面是否规范</div><div class="block-body"><div class="label high">高优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/404-audit</span></li></ul><div class="code-title">原代码</div><pre><code>{
+  "url": "https://hstvx.com/404-audit",
+  "final_url": "https://hstvx.com/404-audit",
+  "status": 404,
+  "title": "好色TV-404",
+  "robots": "index,follow",
+  "canonical": "",
+  "has_search_form": false,
+  "has_home_link": false,
+  "has_header": false,
+  "has_footer": false,
+  "h1_count": 0
+}</code></pre><div class="code-title">建议修改为</div><pre><code>请按 404 页面模板规范统一处理。</code></pre><ul><li><span class="need-fix">【需修改】</span>404 页面必须返回真实 404 状态码。</li><li><span class="need-fix">【需修改】</span>404 页面必须使用 noindex,follow。</li><li><span class="need-fix">【需修改】</span>404 页面不应输出 canonical。</li><li><span class="need-fix">【需修改】</span>404 页面需要保留搜索框。</li><li><span class="need-fix">【需修改】</span>404 页面需要保留返回首页链接。</li></ul></div></div><div class="block"><div class="block-title">404检查</div><div class="block-body"><div class="label high">高优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/</span></li><li><span class="url">https://hstvx.com/videos/latest</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4</span></li><li><span class="url">https://hstvx.com/search/3p</span></li><li><span class="url">https://hstvx.com/hotsearch</span></li><li><span class="url">https://hstvx.com/category/166</span></li></ul><div class="code-title">原代码</div><pre><code>https://hstvx.com/videos/page/-1
+https://hstvx.com/videos/page/999999
+https://hstvx.com/videos/page/abcd
+https://hstvx.com/videos/page/%25%E2%80%A6%E2%80%A6%EF%BF%A5%23
+https://hstvx.com/videos/page/%E6%B5%8B%E8%AF%95
+
+https://hstvx.com/videos/latest/page/-1
+https://hstvx.com/videos/latest/page/999999
+https://hstvx.com/videos/latest/page/abcd
+https://hstvx.com/videos/latest/page/%25%E2%80%A6%E2%80%A6%EF%BF%A5%23
+https://hstvx.com/videos/latest/page/%E6%B5%8B%E8%AF%95
+
+https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/-1
+https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/999999
+https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/abcd
+https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/%25%E2%80%A6%E2%80%A6%EF%BF%A5%23
+https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/%E6%B5%8B%E8%AF%95
+
+https://hstvx.com/search/3p/page/-1
+https://hstvx.com/search/3p/page/999999
+https://hstvx.com/search/3p/page/abcd
+https://hstvx.com/search/3p/page/%25%E2%80%A6%E2%80%A6%EF%BF%A5%23
+https://hstvx.com/search/3p/page/%E6%B5%8B%E8%AF%95
+
+https://hstvx.com/hotsearch/page/-1
+https://hstvx.com/hotsearch/page/999999
+https://hstvx.com/hotsearch/page/abcd
+https://hstvx.com/hotsearch/page/%25%E2%80%A6%E2%80%A6%EF%BF%A5%23
+https://hstvx.com/hotsearch/page/%E6%B5%8B%E8%AF%95
+
+https://hstvx.com/category/166/page/-1
+https://hstvx.com/category/166/page/999999
+https://hstvx.com/category/166/page/abcd
+https://hstvx.com/category/166/page/%25%E2%80%A6%E2%80%A6%EF%BF%A5%23
+https://hstvx.com/category/166/page/%E6%B5%8B%E8%AF%95</code></pre><div class="code-title">建议修改为</div><pre><code>请按非法分页 404 规则统一处理异常分页路径。</code></pre><ul><li><span class="need-fix">【需修改】</span>超页码路径必须返回404。</li><li><span class="need-fix">【需修改】</span>负页码路径必须返回404。</li><li><span class="need-fix">【需修改】</span>字母页码路径必须返回404。</li><li><span class="need-fix">【需修改】</span>特殊符号页码路径必须返回404。</li><li><span class="need-fix">【需修改】</span>中文页码路径必须返回404。</li></ul></div></div><div class="block"><div class="block-title">H标签检查</div><div class="block-body"><div class="label high">高优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/hotsearch</span></li><li><span class="url">https://hstvx.com/hotsearch/page/2</span></li><li><span class="url">https://hstvx.com/creator/48</span></li><li><span class="url">https://hstvx.com/creator/48/page/2</span></li><li><span class="url">https://hstvx.com/link/question</span></li><li><span class="url">https://hstvx.com/link/privacy</span></li><li><span class="url">https://hstvx.com/link/protocol</span></li><li><span class="url">https://hstvx.com/link/dmca</span></li><li><span class="url">https://hstvx.com/link/2257</span></li></ul><div class="code-title">原代码</div><pre><code>H1=0, H2=1, H3=1
+
+H1=0, H2=1, H3=1
+
+H1=1, H2=0, H3=1
+
+H1=1, H2=0, H3=1
+
+H1=0, H2=0, H3=1
+
+H1=0, H2=0, H3=6
+
+H1=0, H2=0, H3=15
+
+H1=0, H2=0, H3=1
+
+H1=0, H2=0, H3=1</code></pre><div class="code-title">建议修改为</div><pre><code>请按 H 标签规范调整页面标题层级，并确保 H1 与页面 Title 高度相关。</code></pre><ul><li><span class="need-fix">【需修改】</span>每页只保留 1 个 H1</li><li><span class="need-fix">【需修改】</span>检查 H1 与页面 &lt;title&gt; 的匹配度，保持高度相关但允许自然表述差异</li><li><span class="need-fix">【需修改】</span>严格遵循 H1 → H2 → H3 的递进结构。严禁跳级（例如 H1 直接跳到 H3）</li><li><span class="need-fix">【需修改】</span>按内容结构补齐合理 H2，或者删除H3标签</li></ul></div></div><div class="block"><div class="block-title">Prev / Next 检测</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/creator/48</span></li></ul><div class="code-title">原代码</div><pre><code>{
+  "第一页prev": "",
+  "第一页next": "",
+  "第二页prev": "",
+  "第二页next": ""
+}</code></pre><div class="code-title">建议修改为</div><pre><code>请按真实分页关系修正 Prev / Next 与上下页按钮。</code></pre><ul><li><span class="need-fix">【需修改】</span>第一页 prev 应为空。</li><li><span class="need-fix">【需修改】</span>第一页 next 必须指向真实第二页。</li><li><span class="need-fix">【需修改】</span>第二页 prev 必须指向真实第一页入口地址。</li><li><span class="need-fix">【需修改】</span>第二页 next 必须指向真实第三页或下一页地址。</li><li><span class="need-fix">【需修改】</span>Prev / Next 与上下页按钮必须依据真实 head/DOM 输出，不能靠 URL 结构猜测。</li></ul></div></div><div class="block"><div class="block-title">Url包含大写字母</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/search/3P/</span></li><li><span class="url">https://hstvx.com/tag/ABC/</span></li><li><span class="url">https://hstvx.com/category/3D/1/</span></li><li><span class="url">https://hstvx.com/SEARCH/乱伦</span></li><li><span class="url">https://hstvx.com/SEARCH/萝莉</span></li><li><span class="url">https://hstvx.com/SEARCH/熟女</span></li><li><span class="url">https://hstvx.com/SEARCH/自慰</span></li><li><span class="url">https://hstvx.com/SEARCH/黑人</span></li><li><span class="url">https://hstvx.com/SEARCH/巨乳</span></li><li><span class="url">https://hstvx.com/SEARCH/母子</span></li><li><span class="url">https://hstvx.com/SEARCH/学生</span></li><li><span class="url">https://hstvx.com/SEARCH/绿帽</span></li></ul><div class="code-title">原代码</div><pre><code>{
+  "input_url": "https://hstvx.com/search/3P/",
+  "final_url": "https://hstvx.com/search/3P",
+  "final_status": 200,
+  "history": [
+    {
+      "status": 301,
+      "url": "https://hstvx.com/search/3P/",
+      "location": "http://hstvx.com/search/3P"
+    },
+    {
+      "status": 301,
+      "url": "http://hstvx.com/search/3P",
+      "location": "https://hstvx.com/search/3P"
+    }
+  ],
+  "expected_lowercase_url": "https://hstvx.com/search/3p/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/tag/ABC/",
+  "final_url": "https://hstvx.com/tag/ABC",
+  "final_status": 200,
+  "history": [
+    {
+      "status": 301,
+      "url": "https://hstvx.com/tag/ABC/",
+      "location": "http://hstvx.com/tag/ABC"
+    },
+    {
+      "status": 301,
+      "url": "http://hstvx.com/tag/ABC",
+      "location": "https://hstvx.com/tag/ABC"
+    }
+  ],
+  "expected_lowercase_url": "https://hstvx.com/tag/abc/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/category/3D/1/",
+  "final_url": "https://hstvx.com/category/3D/1",
+  "final_status": 200,
+  "history": [
+    {
+      "status": 301,
+      "url": "https://hstvx.com/category/3D/1/",
+      "location": "http://hstvx.com/category/3D/1"
+    },
+    {
+      "status": 301,
+      "url": "http://hstvx.com/category/3D/1",
+      "location": "https://hstvx.com/category/3D/1"
+    }
+  ],
+  "expected_lowercase_url": "https://hstvx.com/category/3d/1/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/乱伦",
+  "final_url": "https://hstvx.com/SEARCH/%E4%B9%B1%E4%BC%A6",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/乱伦",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/萝莉",
+  "final_url": "https://hstvx.com/SEARCH/%E8%90%9D%E8%8E%89",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/萝莉",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/熟女",
+  "final_url": "https://hstvx.com/SEARCH/%E7%86%9F%E5%A5%B3",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/熟女",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/自慰",
+  "final_url": "https://hstvx.com/SEARCH/%E8%87%AA%E6%85%B0",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/自慰",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/黑人",
+  "final_url": "https://hstvx.com/SEARCH/%E9%BB%91%E4%BA%BA",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/黑人",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/巨乳",
+  "final_url": "https://hstvx.com/SEARCH/%E5%B7%A8%E4%B9%B3",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/巨乳",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/母子",
+  "final_url": "https://hstvx.com/SEARCH/%E6%AF%8D%E5%AD%90",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/母子",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/学生",
+  "final_url": "https://hstvx.com/SEARCH/%E5%AD%A6%E7%94%9F",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/学生",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://hstvx.com/SEARCH/绿帽",
+  "final_url": "https://hstvx.com/SEARCH/%E7%BB%BF%E5%B8%BD",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://hstvx.com/search/绿帽",
+  "is_exact_lowercase_redirect": false
+}</code></pre><div class="code-title">建议修改为</div><pre><code>请按全站 URL 小写化规范处理，避免同一路径出现大小写并存。</code></pre><ul><li><span class="need-fix">【需修改】</span>硬性规则： 站内所有 URL 路径禁止出现大写字母。</li><li><span class="need-fix">【需修改】</span>若用户或爬虫访问了包含大写字母的 URL（例如 /Videos/Category/），系统必须立即执行 301 永久重定向 到对应的小写 URL（/videos/category/）</li></ul></div></div><div class="block"><div class="block-title">图片检测</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/</span></li><li><span class="url">https://hstvx.com/videos/page/2</span></li><li><span class="url">https://hstvx.com/videos/latest</span></li><li><span class="url">https://hstvx.com/videos/latest/page/2</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/2</span></li><li><span class="url">https://hstvx.com/search/3p</span></li><li><span class="url">https://hstvx.com/search/3p/page/2</span></li><li><span class="url">https://hstvx.com/hotsearch</span></li><li><span class="url">https://hstvx.com/hotsearch/page/2</span></li><li><span class="url">https://hstvx.com/creator/48</span></li><li><span class="url">https://hstvx.com/creator/48/page/2</span></li><li><span class="url">https://hstvx.com/link/gohome</span></li><li><span class="url">https://hstvx.com/link/question</span></li><li><span class="url">https://hstvx.com/link/privacy</span></li><li><span class="url">https://hstvx.com/link/protocol</span></li><li><span class="url">https://hstvx.com/link/dmca</span></li><li><span class="url">https://hstvx.com/link/2257</span></li><li><span class="url">https://hstvx.com/category/166</span></li><li><span class="url">https://hstvx.com/category/166/page/2</span></li></ul><div class="code-title">原代码</div><pre><code>img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1
+
+img_missing_alt=1</code></pre><div class="code-title">建议修改为</div><pre><code>请按图片语义化与无障碍规范补齐 alt 属性。</code></pre><ul><li><span class="need-fix">【需修改】</span>有意义图片： 必须包含描述性 alt 文本，准确传达图片信息。</li><li><span class="need-fix">【需修改】</span>纯装饰性图片： 必须保留 alt=""（空值），以告知屏幕阅读器忽略此图，严禁缺失该属性。</li></ul></div></div><div class="block"><div class="block-title">多媒体og twittercard</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/</span></li><li><span class="url">https://hstvx.com/videos/page/2</span></li><li><span class="url">https://hstvx.com/videos/latest</span></li><li><span class="url">https://hstvx.com/videos/latest/page/2</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/2</span></li><li><span class="url">https://hstvx.com/search/3p</span></li><li><span class="url">https://hstvx.com/search/3p/page/2</span></li><li><span class="url">https://hstvx.com/hotsearch</span></li><li><span class="url">https://hstvx.com/hotsearch/page/2</span></li><li><span class="url">https://hstvx.com/creator/48</span></li><li><span class="url">https://hstvx.com/creator/48/page/2</span></li><li><span class="url">https://hstvx.com/link/gohome</span></li><li><span class="url">https://hstvx.com/link/question</span></li><li><span class="url">https://hstvx.com/link/privacy</span></li><li><span class="url">https://hstvx.com/link/protocol</span></li><li><span class="url">https://hstvx.com/link/dmca</span></li><li><span class="url">https://hstvx.com/link/2257</span></li><li><span class="url">https://hstvx.com/category/166</span></li><li><span class="url">https://hstvx.com/category/166/page/2</span></li></ul><div class="code-title">原代码</div><pre><code>代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改</code></pre><div class="code-title">建议修改为</div><pre><code>请参考规范代码：https://docs.google.com/document/d/1WOhnyRy8Fm-t0MRk-j8erSfaN7lkE7meBKTYxL5IVY0/edit?tab=t.bip0lny18zu</code></pre><ul><li><span class="need-fix">【需修改】</span>按规范文档修正 og / twittercard 代码</li></ul></div></div><div class="block"><div class="block-title">第二页的元标题 元描述 否包含页码</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/creator/48</span></li></ul><div class="code-title">原代码</div><pre><code>【第二页】
+&lt;title&gt;&lt;/title&gt;
+&lt;meta name="description" content="" /&gt;</code></pre><div class="code-title">建议修改为</div><pre><code>请按分页 Meta 标签动态化规则修正。</code></pre><ul><li><span class="need-fix">【需修改】</span>第一页标题（Title）和描述（Description）不能包含“第1页”、“Page 1”或“1”等分页字样。</li><li><span class="need-fix">【需修改】</span>第二页及以后标题（Title）和描述（Description）必须带正确的第N页信息。</li><li><span class="need-fix">【需修改】</span>不要把 [PAGE] 这类模板占位符直接输出到前台。</li></ul></div></div><div class="block"><div class="block-title">结构化数据</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://hstvx.com/</span></li><li><span class="url">https://hstvx.com/videos/page/2</span></li><li><span class="url">https://hstvx.com/videos/latest</span></li><li><span class="url">https://hstvx.com/videos/latest/page/2</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4</span></li><li><span class="url">https://hstvx.com/tag/%E5%8F%A3%E4%BA%A4/page/2</span></li><li><span class="url">https://hstvx.com/search/3p</span></li><li><span class="url">https://hstvx.com/search/3p/page/2</span></li><li><span class="url">https://hstvx.com/hotsearch</span></li><li><span class="url">https://hstvx.com/hotsearch/page/2</span></li><li><span class="url">https://hstvx.com/creator/48</span></li><li><span class="url">https://hstvx.com/creator/48/page/2</span></li><li><span class="url">https://hstvx.com/link/gohome</span></li><li><span class="url">https://hstvx.com/link/question</span></li><li><span class="url">https://hstvx.com/link/privacy</span></li><li><span class="url">https://hstvx.com/link/protocol</span></li><li><span class="url">https://hstvx.com/link/dmca</span></li><li><span class="url">https://hstvx.com/link/2257</span></li><li><span class="url">https://hstvx.com/category/166</span></li><li><span class="url">https://hstvx.com/category/166/page/2</span></li></ul><div class="code-title">原代码</div><pre><code>代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改
+
+代码不规范，需要修改</code></pre><div class="code-title">建议修改为</div><pre><code>请参考规范代码：https://docs.google.com/document/d/1WOhnyRy8Fm-t0MRk-j8erSfaN7lkE7meBKTYxL5IVY0/edit?tab=t.c1a57sycd1zw</code></pre><ul><li><span class="need-fix">【需修改】</span>按规范文档补齐结构化数据代码</li></ul></div></div></div></body></html>
