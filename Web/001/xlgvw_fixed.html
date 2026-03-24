@@ -1,0 +1,171 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>修改方案</title><style>body{margin:0;padding:32px;background:#f5f7fb;color:#222;font:15px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif}.wrap{max-width:1120px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.06);padding:36px}h1{margin:0 0 8px;font-size:30px;color:#111827}.meta{color:#6b7280;font-size:14px;margin-bottom:24px}.block{margin-bottom:30px;border:1px solid #e5e7eb;border-radius:12px;overflow:hidden}.block-title{background:#111827;color:#fff;padding:14px 18px;font-size:18px;font-weight:700}.block-body{padding:18px}.label{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:10px}.high{background:#fee2e2;color:#b91c1c}.mid{background:#fef3c7;color:#92400e}.low{background:#e0f2fe;color:#075985}.code-title{margin:16px 0 8px;font-weight:700;color:#111827}pre{margin:0 0 14px;padding:14px;border-radius:10px;overflow-x:auto;background:#0f172a;color:#e5e7eb;font-size:13px;line-height:1.6;white-space:pre-wrap;word-break:break-word}ul{margin:8px 0 0 20px;padding:0}li{margin-bottom:8px}.url{word-break:break-all;color:#2563eb}.need-fix{color:#dc2626;font-weight:700}</style></head><body><div class="wrap"><h1>修改方案</h1><div class="meta">本方案与测试详细报告对应。</div><div class="block"><div class="block-title">H标签检查</div><div class="block-body"><div class="label high">高优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com/author/90</span></li><li><span class="url">https://xlgvw.com/search/3p</span></li><li><span class="url">https://xlgvw.com/tag/3P</span></li></ul><div class="code-title">原代码</div><pre><code>H1=1, H2=0, H3=25
+
+H1=1, H2=0, H3=6</code></pre><div class="code-title">建议修改为</div><pre><code>请按 H 标签规范调整页面标题层级，并确保 H1 与页面 Title 高度相关。</code></pre><ul><li><span class="need-fix">【需修改】</span>每页只保留 1 个 H1</li><li><span class="need-fix">【需修改】</span>检查 H1 与页面 &lt;title&gt; 的匹配度，保持高度相关但允许自然表述差异</li><li><span class="need-fix">【需修改】</span>严格遵循 H1 → H2 → H3 的递进结构。严禁跳级（例如 H1 直接跳到 H3）</li><li><span class="need-fix">【需修改】</span>按内容结构补齐合理 H2，或者删除H3标签</li></ul></div></div><div class="block"><div class="block-title">Prev / Next 检测</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com/category/zxbl</span></li><li><span class="url">https://xlgvw.com/author/90</span></li><li><span class="url">https://xlgvw.com/search/3p</span></li><li><span class="url">https://xlgvw.com/tag/3P</span></li></ul><div class="code-title">原代码</div><pre><code>{
+  "第一页prev": "https://xlgvw.com/category/zxbl/",
+  "第一页next": "https://xlgvw.com/category/zxbl/3/",
+  "第二页prev": "https://xlgvw.com/category/zxbl/2/",
+  "第二页next": "https://xlgvw.com/category/zxbl/4/"
+}
+
+{
+  "第一页prev": "https://xlgvw.com/author/90/",
+  "第一页next": "https://xlgvw.com/author/90/3/",
+  "第二页prev": "https://xlgvw.com/author/90/2/",
+  "第二页next": "https://xlgvw.com/author/90/4/"
+}
+
+{
+  "第一页prev": "https://xlgvw.com/search/3p/",
+  "第一页next": "https://xlgvw.com/search/3p/3/",
+  "第二页prev": "https://xlgvw.com/search/3p/2/",
+  "第二页next": ""
+}
+
+{
+  "第一页prev": "https://xlgvw.com/tag/3P/",
+  "第一页next": "",
+  "第二页prev": "",
+  "第二页next": ""
+}</code></pre><div class="code-title">建议修改为</div><pre><code>请按真实分页关系修正 Prev / Next 与上下页按钮。</code></pre><ul><li><span class="need-fix">【需修改】</span>第一页 prev 应为空。</li><li><span class="need-fix">【需修改】</span>第一页 next 必须指向真实第二页。</li><li><span class="need-fix">【需修改】</span>第二页 prev 必须指向真实第一页入口地址。</li><li><span class="need-fix">【需修改】</span>第二页 next 必须指向真实第三页或下一页地址。</li><li><span class="need-fix">【需修改】</span>Prev / Next 与上下页按钮必须依据真实 head/DOM 输出，不能靠 URL 结构猜测。</li></ul></div></div><div class="block"><div class="block-title">Url包含大写字母</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com/tag/ABC</span></li><li><span class="url">https://xlgvw.com/category/3D</span></li><li><span class="url">https://xlgvw.com/SEARCH-PAGE.HTML</span></li><li><span class="url">https://xlgvw.com/CATEGORY/ZXBL</span></li><li><span class="url">https://xlgvw.com/CATEGORY/WNTS</span></li><li><span class="url">https://xlgvw.com/CATEGORY/XRNG</span></li><li><span class="url">https://xlgvw.com/CATEGORY/JZBB</span></li><li><span class="url">https://xlgvw.com/CATEGORY/TCNM</span></li><li><span class="url">https://xlgvw.com/CATEGORY/XAZY</span></li><li><span class="url">https://xlgvw.com/CATEGORY/ONLYFANS</span></li><li><span class="url">https://xlgvw.com/CATEGORY/ZZYH</span></li></ul><div class="code-title">原代码</div><pre><code>{
+  "input_url": "https://xlgvw.com/tag/ABC/",
+  "final_url": "https://xlgvw.com/tag/ABC/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/tag/abc/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/category/3D/1/",
+  "final_url": "https://xlgvw.com/category/3D/1/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/3d/1/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/SEARCH-PAGE.HTML",
+  "final_url": "https://xlgvw.com/SEARCH-PAGE.HTML",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/search-page.html",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/ZXBL/",
+  "final_url": "https://xlgvw.com/CATEGORY/ZXBL/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/zxbl/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/WNTS/",
+  "final_url": "https://xlgvw.com/CATEGORY/WNTS/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/wnts/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/XRNG/",
+  "final_url": "https://xlgvw.com/CATEGORY/XRNG/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/xrng/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/JZBB/",
+  "final_url": "https://xlgvw.com/CATEGORY/JZBB/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/jzbb/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/TCNM/",
+  "final_url": "https://xlgvw.com/CATEGORY/TCNM/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/tcnm/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/XAZY/",
+  "final_url": "https://xlgvw.com/CATEGORY/XAZY/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/xazy/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/ONLYFANS/",
+  "final_url": "https://xlgvw.com/CATEGORY/ONLYFANS/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/onlyfans/",
+  "is_exact_lowercase_redirect": false
+}
+
+{
+  "input_url": "https://xlgvw.com/CATEGORY/ZZYH/",
+  "final_url": "https://xlgvw.com/CATEGORY/ZZYH/",
+  "final_status": 404,
+  "history": [],
+  "expected_lowercase_url": "https://xlgvw.com/category/zzyh/",
+  "is_exact_lowercase_redirect": false
+}</code></pre><div class="code-title">建议修改为</div><pre><code>请按全站 URL 小写化规范处理，避免同一路径出现大小写并存。</code></pre><ul><li><span class="need-fix">【需修改】</span>硬性规则： 站内所有 URL 路径禁止出现大写字母。</li><li><span class="need-fix">【需修改】</span>若用户或爬虫访问了包含大写字母的 URL（例如 /Videos/Category/），系统必须立即执行 301 永久重定向 到对应的小写 URL（/videos/category/）</li></ul></div></div><div class="block"><div class="block-title">图片检测</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com</span></li></ul><div class="code-title">原代码</div><pre><code>&lt;img src="/usr/themes/Mirages/images/popup_header.png" alt /&gt;
+
+&lt;img src="https://mc.yandex.ru/watch/102175860" style="position:absolute; left:-9999px;" alt="" /&gt;</code></pre><div class="code-title">建议修改为</div><pre><code>请按图片语义化与无障碍规范补齐 alt 属性。</code></pre><ul><li><span class="need-fix">【需修改】</span>有意义图片： 必须包含描述性 alt 文本，准确传达图片信息。</li><li><span class="need-fix">【需修改】</span>纯装饰性图片： 必须保留 alt=""（空值），以告知屏幕阅读器忽略此图，严禁缺失该属性。</li></ul></div></div><div class="block"><div class="block-title">多媒体og twittercard</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com/hjdl.html</span></li></ul><div class="code-title">原代码</div><pre><code>代码不规范，需要修改</code></pre><div class="code-title">建议修改为</div><pre><code>请参考规范代码：https://docs.google.com/document/d/1WOhnyRy8Fm-t0MRk-j8erSfaN7lkE7meBKTYxL5IVY0/edit?tab=t.bip0lny18zu</code></pre><ul><li><span class="need-fix">【需修改】</span>按规范文档修正 og / twittercard 代码</li></ul></div></div><div class="block"><div class="block-title">搜索行为专项</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com/search/chigua</span></li></ul><div class="code-title">原代码</div><pre><code>{
+  "url": "https://xlgvw.com/search/chigua/page/2/",
+  "status": 404,
+  "title": "页面没找到 - 小蓝视频网 - 最新最全的男同黑料曝光平台",
+  "description": "小蓝视频网，专为男同圈打造的吃瓜爆料平台。网红奶狗、伪娘TS、蓝友投稿、明星黑料、正装硬汉、金主爸爸、羞耻腐男、海外猛料一网打尽！实时更新，精彩不断，尽览男同圈内最劲爆的隐秘内容和成人视频。",
+  "robots": "noindex,follow",
+  "recommended_video_count_hint": 78,
+  "is_error_style_template": true,
+  "has_real_results": false
+}</code></pre><div class="code-title">建议修改为</div><pre><code>请按搜索页模板专项规则修正。</code></pre><ul><li><span class="need-fix">【需修改】</span>搜索第一页去掉标题（Title）和描述（Description）中是否包含“第1页”、“Page 1”或“1”等字样。</li><li><span class="need-fix">【需修改】</span>大写搜索URL归一化到小写，包含大写字母的 URL（例如/search/3P/），系统必须立即执行 301 永久重定向 到对应的小写 URL（/search/3p/）</li><li><span class="need-fix">【需修改】</span>无结果搜索页保持状态码200</li><li><span class="need-fix">【需修改】</span>无结果搜索页使用 noindex,follow</li><li><span class="need-fix">【需修改】</span>无结果搜索页补齐随机推荐24个视频</li><li><span class="need-fix">【需修改】</span>搜索URL不要落到错误页/404模板</li></ul></div></div><div class="block"><div class="block-title">第二页的元标题 元描述 否包含页码</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com/category/zxbl</span></li><li><span class="url">https://xlgvw.com/author/90</span></li><li><span class="url">https://xlgvw.com/search/3p</span></li><li><span class="url">https://xlgvw.com/tag/3P</span></li></ul><div class="code-title">原代码</div><pre><code>【第二页】
+&lt;title&gt;最新爆料 - 最新男同黑料做爱视频第3页｜小蓝视频网&lt;/title&gt;
+&lt;meta name="description" content="每日更新男同圈最热流出内容第3页，小蓝视频网每日更新男同圈最新爆料、偷拍流出、男星艳照和私密视频合集，带你掌握第一手圈内猛料。" /&gt;
+
+【第二页】
+&lt;title&gt;篮球体育生 发布的第3页文章 - 小蓝视频网 - 最新最全的男同黑料曝光平台&lt;/title&gt;
+&lt;meta name="description" content="小蓝视频网-篮球体育生-发布的第3页最新同志爆料在线观看" /&gt;
+
+【第二页】
+&lt;title&gt;搜索“3p”相关内容聚合第3页 - 小蓝同志圈爆料资源库&lt;/title&gt;
+&lt;meta name="description" content="你正在搜索“3p”相关内容第3页，小蓝视频网为你精准匹配男同视频、爆料投稿、蓝友私密分享与圈内猛料合集。覆盖伪娘TS、网红奶狗、正装硬汉等多种男同类型，满足你对3p的一切期待！" /&gt;
+
+【第二页】
+&lt;title&gt;&lt;/title&gt;
+&lt;meta name="description" content="" /&gt;</code></pre><div class="code-title">建议修改为</div><pre><code>请按分页 Meta 标签动态化规则修正。</code></pre><ul><li><span class="need-fix">【需修改】</span>第一页标题（Title）和描述（Description）不能包含“第1页”、“Page 1”或“1”等分页字样。</li><li><span class="need-fix">【需修改】</span>第二页及以后标题（Title）和描述（Description）必须带正确的第N页信息。</li><li><span class="need-fix">【需修改】</span>不要把 [PAGE] 这类模板占位符直接输出到前台。</li></ul></div></div><div class="block"><div class="block-title">链接规范检查</div><div class="block-body"><div class="label mid">中优先级</div><div>问题页面：</div><ul><li><span class="url">https://xlgvw.com</span></li><li><span class="url">https://xlgvw.com/faq.html</span></li><li><span class="url">https://xlgvw.com/ContactUs.html</span></li><li><span class="url">https://xlgvw.com/PrivacyPolicy.html</span></li><li><span class="url">https://xlgvw.com/Disclaimer.html</span></li><li><span class="url">https://xlgvw.com/crr.html</span></li><li><span class="url">https://xlgvw.com/tgqg.html</span></li><li><span class="url">https://xlgvw.com/wqnr.html</span></li><li><span class="url">https://xlgvw.com/AboutUs.html</span></li><li><span class="url">https://xlgvw.com/hjdl.html</span></li><li><span class="url">https://xlgvw.com/category/zxbl</span></li><li><span class="url">https://xlgvw.com/archives/13818</span></li><li><span class="url">https://xlgvw.com/author/90</span></li><li><span class="url">https://xlgvw.com/search/3p</span></li><li><span class="url">https://xlgvw.com/tag/3P</span></li></ul><div class="code-title">原代码</div><pre><code>&lt;a href="http://browsehappy.com/"&gt;升级你的浏览器&lt;/a&gt;
+
+&lt;a class="nav-grid-item" rel="nofollow noopener" target="_blank" href="/swhz.html" title="广告商务合作" data-navigation_key="more" data-navigation_name="广告商务合作" &gt;广告商务合作&lt;/a&gt;
+
+&lt;a class="nav-grid-item" rel="nofollow noopener" target="_blank" href="/telegram.html" title="TG官方群" data-navigation_key="more" data-navigation_name="TG官方群" &gt;TG官方群&lt;/a&gt;
+
+&lt;a class="" rel="nofollow noopener" target="_blank" href="/swhz.html" title="广告商务合作"&gt;广告商务合作&lt;/a&gt;
+
+&lt;a class="" rel="nofollow noopener" target="_blank" href="/telegram.html" title="TG官方群"&gt;TG官方群&lt;/a&gt;
+
+&lt;a id="side-toolbar-github" href="/github.html" title="Github" rel="nofollow noopener" target="_blank"&gt;&lt;i class="fa fa-github"&gt;&lt;/i&gt;&lt;/a&gt;
+
+&lt;a id="side-toolbar-telegram" href="/tgchannel.html" title="Telegram" rel="nofollow noopener" target="_blank"&gt;&lt;i class="fa fa-telegram"&gt;&lt;/i&gt;&lt;/a&gt;
+
+&lt;a id="side-toolbar-twitter" href="/twitter.html" title="Twitter" rel="nofollow noopener" target="_blank"&gt;&lt;i class="fa fa-twitter"&gt;&lt;/i&gt;&lt;/a&gt;
+
+&lt;a href="/swhz.html" rel="nofollow noopener" target="_blank" title="广告商务合作" data-navigation_key="more" data-navigation_name="广告商务合作"&gt;广告商务合作&lt;/a&gt;
+
+&lt;a href="/telegram.html" rel="nofollow noopener" target="_blank" title="TG官方群" data-navigation_key="more" data-navigation_name="TG官方群"&gt;TG官方群&lt;/a&gt;
+
+&lt;a href="http://browsehappy.com/"&gt;升级你的浏览器&lt;/a&gt;</code></pre><div class="code-title">建议修改为</div><pre><code>请按外链权重与站内链接规范处理 nofollow。</code></pre><ul><li><span class="need-fix">【需修改】</span>外链补 rel="nofollow" 广告链接、社交媒体、合作伙伴、 友情链接或第三方资源引用。</li><li><span class="need-fix">【需修改】</span>站内链接排除 nofollow，确保站内跳转（如分类页、标签页、详情页）严禁带有 nofollow</li></ul></div></div></div></body></html>
